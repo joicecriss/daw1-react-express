@@ -11,7 +11,7 @@ class Chave {
 
 # Servidor
 class Servidor {
-  constructor(id, nome, endereco, cpf, contato, nascimento, status) {
+  constructor(id, nome, cpf, contato, nascimento, status) {
     this.id = id;
     this.nome = nome;
     this.cpf = cpf;
