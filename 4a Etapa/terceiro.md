@@ -37,7 +37,9 @@ CREATE TABLE emprestimo (
   dthr_devolucao DATETIME NOT NULL,
   status BOOLEAN NOT NULL,
   chave_id INT NOT NULL,
-  servidor_id INT NOT NULL,
+  servidor_retiraID INT NOT NULL,
+  servidor_devolveID INT NOT NULL,
   FOREIGN KEY (chave_id) REFERENCES chave(id),
-  FOREIGN KEY (servidor_id) REFERENCES servidor(id)
+  FOREIGN KEY (servidor_retiraID) REFERENCES servidor(id),
+  FOREIGN KEY (servidor_devolveID) REFERENCES servidor(id)
 );
