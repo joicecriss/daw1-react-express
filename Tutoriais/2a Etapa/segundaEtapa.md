@@ -1,4 +1,4 @@
-### Criação de um novo projeto com o MariaDB:
+# Criação de um novo projeto com o MariaDB:
 
 Para a criação de um novo projeto utilizando o banco de dados MariaDB com o
 sistema Linux, é necessário primeiramente verificar se o mesmo se encontra instalado em
@@ -57,7 +57,7 @@ FLUSH PRIVILEGES;
 E, por fim, temos uma base de dados já configurada para ser modelada de acordo
 com a necessidade do seu projeto.
 
-### Criação de um novo projeto com o React.js:
+# Criação de um novo projeto com o React.js:
 
 Para a criação de um novo projeto utilizando o React.js no sistema Linux, é necessário primeiramente ter instalado o node.js. Caso não tenha instalado, siga os passos da primeira etapa.
 
