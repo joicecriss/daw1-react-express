@@ -1,6 +1,6 @@
 import Table from '../components/Table/index'
 
-function ListPage(){
+function ListKeys(){
 
     const data = [
         { nome: 'Sala 101', situacao: 'Disponível', status: 'Ativo' },
@@ -17,4 +17,4 @@ function ListPage(){
     );
 }
 
-export default ListPage;
+export default ListKeys;
