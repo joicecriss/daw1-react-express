@@ -1,5 +1,5 @@
-# Chave
-
+### Chave
+```
 class Chave {
   constructor(id, nome, situacao, status) {
     this.id = id;
@@ -8,8 +8,10 @@ class Chave {
     this.status = status;
   }
 }
+```
 
-# Servidor
+### Servidor
+```
 class Servidor {
   constructor(id, nome, cpf, contato, nascimento, status) {
     this.id = id;
@@ -20,8 +22,10 @@ class Servidor {
     this.status = status;
   }
 }
+```
 
-# Emprestimo
+### Emprestimo
+```
 class Emprestimo {
   constructor(id, dataHoraEmprestimo, datHoraDevoluvao, status) {
     this.id = id;
@@ -30,8 +34,11 @@ class Emprestimo {
     this.status = status;
   }
 }
+```
 
-# Atribuindo objetos Chave e Servidor
+### Atribuindo objetos Chave e Servidor
+```
 Emprestimo.Chave = Chave;
 Emprestimo.servidorDevolveu = Servidor;
 Emprestimo.servidorRetirou = Servidor;
+```
