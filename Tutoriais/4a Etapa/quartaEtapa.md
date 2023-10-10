@@ -2,16 +2,16 @@
 ## Banco - MariaDB
 
 ### 1º Passo:
-<p>Vamos criar o banco de dados para o sistema. Siga estas etapas no MySQL Workbench:</p>
+ Vamos criar o banco de dados para o sistema. Siga estas etapas no MySQL Workbench:
 
-<p>Na guia "Navigator" à esquerda, clique com o botão direito do mouse em "Schemas" e escolha "Create Schema..." para criar um novo esquema de banco de dados.
-<p>Dê o nome do banco "emprestimoDB".</p>
+ Na guia "Navigator" à esquerda, clique com o botão direito do mouse em "Schemas" e escolha "Create Schema..." para criar um novo esquema de banco de dados.
+Dê o nome do banco "emprestimoDB".
 
 ### 2º Passo:
-<p>Com o novo esquema relacional criado, você pode começar a criar tabelas para as entidades do sistema.</p>
+Com o novo esquema relacional criado, você pode começar a criar tabelas para as entidades do sistema.
 
-<p>Digite na interface do banco os seguintes comandos: </p>
-
+Digite na interface do banco os seguintes comandos:
+```
 -- Tabela para Chave
 CREATE TABLE chave (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,3 +43,4 @@ CREATE TABLE emprestimo (
   FOREIGN KEY (servidor_retiraID) REFERENCES servidor(id),
   FOREIGN KEY (servidor_devolveID) REFERENCES servidor(id)
 );
+```
