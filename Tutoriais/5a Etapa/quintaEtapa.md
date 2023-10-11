@@ -1,103 +1,125 @@
 # Como criar a funcionalidade Listar Chaves Disponíveis
 
-## BackEnd
+### Backend
 
+### Crie um arquivo server.js dentro da pasta do projeto, para configurar o servidor Express. Cole o código no arquivo:
+
+```
+const express = require('express');
+const mysql = require('mysql2');
+const app = express();
+const port = 5000;
+//A porta do servidor deve ser a mesma do frontend
+
+// Configuração da conexão com o banco de dados MariaDB
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'iftm',
+  database: 'emprestimo_chaves',
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err);
+    return;
+  }
+  console.log('Conexão com o banco de dados MariaDB estabelecida.');
+});
+
+// Rota para listar chaves disponíveis
+app.get('/api/chaves-disponiveis', (req, res) => {
+  const query = 'SELECT * FROM chave WHERE situacao = true';
+  connection.query(query, (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao listar chaves disponíveis.' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Servidor Express está rodando na porta ${port}`);
+});
+```
+
+### Execute o servidor backend
+
+```
+node server.js
+```
 
 ## FrontEnd
-### 1 - Dentro da pasta /src crie duas pastas chamadas /components e /pages
-### 2 - Dentro da pasta /pages crie o arquivo ListKeys.js
-    - Aqui será a página de visualização, vamos criar o component table que terá a tabela.
-### 3 - Dentro da pasta /components crie uma pasta chamada /table
-    - Dentro da pasta /table crie os arquivos index.js e style.css
-    
-    - Dentro do arquivo index.js coloque o seguinte código:
-```
-    import React from 'react';
-    import './style.css'
 
-    function Table({data}) {
-
-        return (
-            <section>
-                <table className="custom-table">
-                    <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Situação</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {data.map((item, index) => (
-                        <tr key={index}>
-                        <td>{item.nome}</td>
-                        <td>{item.situacao}</td>
-                        <td>{item.status}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </section>
-        );
-    }
-
-    export default Table;
-```
-    - Dentro do arquivo style.css coloque o seguinte código:
-```
-    .table-container {
-        margin: 20px;
-    }
-    
-    .custom-table {
-        width: 100%;
-        border-collapse: collapse;
-        border: 1px solid #ddd;
-    }
-
-    .custom-table th, .custom-table td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-
-    .custom-table th {
-        background-color: #f2f2f2;
-    }
-
-    .custom-table tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    .custom-table tr:hover {
-        background-color: #ddd;
-    }
-```
-### 4 - Dentro da pasta /pages abra o arquivo ListKeys.js e coloque o seguinte código:
+### Crie o projeto React dentro do diretório do projeto:
 
 ```
-import Table from '../components/Table/index'
+npx create-react-app frontend
+cd frontend
+```
 
-function ListPage(){
+### Instale a biblioteca axios para fazer chamadas à API do backend:
 
-    const data = [
-        { nome: 'Sala 101', situacao: 'Disponível', status: 'Ativo' },
-        { nome: 'Sala 102', situacao: 'Disponível', status: 'Ativo' },
-        { nome: 'Sala 103', situacao: 'Disponível', status: 'Ativo' },
-      ];
+```
+npm install axios
+```
 
-    return(
-        <section>
-            <h1>Listagem de Chaves Disponíveis</h1>
-            <Table data={data}/>
-        </section>
-        
-    );
+### Crie um arquivo ListarChaves.js na pasta src do seu projeto frontend, e coloque o seguinte código:
+
+```
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function ListarChaves() {
+  const [chaves, setChaves] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/chaves-disponiveis') // Rota da API no servidor backend
+      .then((response) => {
+        setChaves(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h2>Chaves Disponíveis:</h2>
+      <ul>
+        {chaves.map((chave) => (
+          <li key={chave.id}>{chave.nome}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default ListPage;
+export default ListarChaves;
 ```
 
-### 5 - Abra o arquivo index.css que está dentro da pasta /src
-        - Dentro da tag body{} coloque a seguinte linha:
-`padding: 5vh;`
+### Abra o arquivo index.js na pasta src, import o arquivo ListarChaves e Altere a chamada do arquivo na função para ListarChaves, use o exemplo a seguir para aplicar no código. (NÃO COPIE O CÓDIGO, apenas importe o arquivo e mude a chamada na função)
+
+```
+import React from 'react';
+import ListarChaves from './ListarChaves';
+
+function App() {
+  return (
+    <div className="App">
+      <ListarChaves />
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Execute o frontend
+
+```
+npm start
+```
+
+### Caso apareça apenas a tela com o título sem a listagem, veja se o frontend e o backend estão rodando na mesma porta. Se não estiver, altera a porta do backend no arquivo server.js para a mesma porta do frontend.
