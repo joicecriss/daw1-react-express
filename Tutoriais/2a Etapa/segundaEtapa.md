@@ -38,7 +38,7 @@ Após seguir todos os passos, é só continuar com a criação de sua base de da
 Para a criação dessa base de dados, é necessário digitar o comando abaixo:
 
 ```
-CREATE DATABASE emprestimo_db;
+CREATE DATABASE emprestimo_chaves;
 ``` 
 
 Agora, crie um usuário para o seu projeto e defina suas permissões de acesso ao
@@ -48,7 +48,7 @@ banco de dados criado:
 CREATE USER 'seu_usuario'@'localhost' 
 IDENTIFIED BY 'sua_senha';
 
-GRANT ALL PRIVILEGES ON emprestimo_db.* TO
+GRANT ALL PRIVILEGES ON emprestimo_chaves.* TO
 'seu_usuario'@'localhost';
 
 FLUSH PRIVILEGES;
