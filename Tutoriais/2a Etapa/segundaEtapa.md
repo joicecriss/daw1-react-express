@@ -57,26 +57,5 @@ FLUSH PRIVILEGES;
 E, por fim, temos uma base de dados já configurada para ser modelada de acordo
 com a necessidade do seu projeto.
 
-# Criação de um novo projeto com o React.js:
+# Criação de um novo projeto com o React.js será feita em outra etapa.
 
-Para a criação de um novo projeto utilizando o React.js no sistema Linux, é necessário primeiramente ter instalado o node.js. Caso não tenha instalado, siga os passos da primeira etapa.
-
-Abra o terminal e vá até o diretório onde ficará o projeto e digita o comando para criar uma pasta:
-```
-mkdir react-express
-cd react-express
-```
-Comando para instalar o Create React App, que é uma ferramenta oficial para criar rapidamente aplicações React sem a necessidade de configurar manualmente o ambiente.
-```
-npm install -q create-react-app
-```
-
-Comando para criar um novo aplicativo react em seu diretório.
-```
-npx create-react-app .
-```
-
-Agora só inicializar o react
-```
-npm start
-```
