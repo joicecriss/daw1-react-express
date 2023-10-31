@@ -1,3 +1,5 @@
+### Esta é apenas uma demonstração de como é feita as classe no react, não será necessário colocar no projeto.
+
 ### Chave
 ```
 class Chave {
