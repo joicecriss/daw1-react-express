@@ -11,6 +11,7 @@ mkdir backend
 cd backend
 npm init -y
 npm install express mysql2
+npm install cors
 ```
 
 ### Crie um arquivo server.js dentro da pasta backend do projeto, para configurar o servidor Express. Cole o código no arquivo:
@@ -19,14 +20,20 @@ npm install express mysql2
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
+const cors = require('cors'); // Importe o módulo cors
 const port = 5000;
-//A porta do servidor deve ser a mesma do frontend
+
+// Configuração do CORS para permitir solicitações do frontend
+const corsOptions = {
+    origin: 'http://localhost:3000', // A URL do seu frontend
+};
+app.use(cors(corsOptions));
 
 // Configuração da conexão com o banco de dados MariaDB
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'iftm',
-  password: 'iftm',
+  user: 'root',
+  password: '123',
   database: 'emprestimo_chaves',
 });
 
@@ -53,6 +60,7 @@ app.get('/api/chaves-disponiveis', (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor Express está rodando na porta ${port}`);
 });
+
 ```
 
 ### Execute o servidor backend
@@ -80,17 +88,21 @@ cd frontend
 npm install axios
 ```
 
-### Crie um arquivo ListarChaves.js na pasta src do seu projeto frontend, e coloque o seguinte código:
+### Crie um arquivo ListarChavesDisponiveis.js na pasta src do seu projeto frontend, e coloque o seguinte código:
 
 ```
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function ListarChaves() {
+function ListarChavesDisponiveis() {
   const [chaves, setChaves] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/chaves-disponiveis') // Rota da API no servidor backend
+    // Defina a URL da API do backend
+    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+
+    // Faça a chamada para a API do backend para listar as chaves disponíveis
+    axios.get(apiUrl + '/api/chaves-disponiveis')
       .then((response) => {
         setChaves(response.data);
       })
@@ -111,19 +123,20 @@ function ListarChaves() {
   );
 }
 
-export default ListarChaves;
+export default ListarChavesDisponiveis;
+
 ```
 
 ### Abra o arquivo index.js na pasta src, import o arquivo ListarChaves e Altere a chamada do arquivo na função para ListarChaves, use o exemplo a seguir para aplicar no código. (NÃO COPIE O CÓDIGO, apenas importe o arquivo e mude a chamada na função)
 
 ```
 import React from 'react';
-import ListarChaves from './ListarChaves';
+import ListarChavesDisponiveis from './ListarChavesDisponiveis';
 
 function App() {
   return (
     <div className="App">
-      <ListarChaves />
+      <ListarChavesDisponiveis />
     </div>
   );
 }
@@ -137,4 +150,3 @@ export default App;
 npm start
 ```
 
-### Caso apareça apenas a tela com o título sem a listagem, veja se o frontend e o backend estão rodando na mesma porta. Se não estiver, altera a porta do backend no arquivo server.js para a mesma porta do frontend.
