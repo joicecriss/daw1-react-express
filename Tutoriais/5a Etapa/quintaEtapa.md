@@ -88,7 +88,7 @@ cd frontend
 npm install axios
 ```
 
-### Crie um arquivo ListarChavesDisponiveis.js na pasta src do seu projeto frontend, e coloque o seguinte código:
+### Crie uma pasta components dentro da pasta src, e crie um arquivo ListarChavesDisponiveis.js na pasta components, e coloque o seguinte código:
 
 ```
 import React, { useEffect, useState } from 'react';
