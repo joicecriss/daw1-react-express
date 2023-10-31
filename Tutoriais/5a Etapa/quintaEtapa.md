@@ -2,7 +2,18 @@
 
 ### Backend
 
-### Crie um arquivo server.js dentro da pasta do projeto, para configurar o servidor Express. Cole o código no arquivo:
+### Crie uma pasta para o seu projeto e navegue até ela no terminal. (use cd para isso)
+
+### Inicialize um projeto Node.js e instale as dependências:
+
+```
+mkdir backend
+cd backend
+npm init -y
+npm install express mysql2
+```
+
+### Crie um arquivo server.js dentro da pasta backend do projeto, para configurar o servidor Express. Cole o código no arquivo:
 
 ```
 const express = require('express');
@@ -14,7 +25,7 @@ const port = 5000;
 // Configuração da conexão com o banco de dados MariaDB
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
+  user: 'iftm',
   password: 'iftm',
   database: 'emprestimo_chaves',
 });
@@ -52,7 +63,11 @@ node server.js
 
 ## FrontEnd
 
-### Crie o projeto React dentro do diretório do projeto:
+### Agora crie o projeto React dentro do diretório do projeto seguindo os próximos passos:
+
+### Em uma nova janela do terminal, navegue até a pasta raiz do seu projeto.
+
+### Inicialize um novo projeto React:
 
 ```
 npx create-react-app frontend
