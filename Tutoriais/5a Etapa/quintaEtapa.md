@@ -88,13 +88,13 @@ cd frontend
 npm install axios
 ```
 
-### Crie uma pasta components dentro da pasta src, e crie um arquivo ListarChavesDisponiveis.js na pasta components, e coloque o seguinte código:
+### Crie uma pasta components dentro da pasta src, e crie um arquivo ListarChaves.js na pasta components, e coloque o seguinte código:
 
 ```
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function ListarChavesDisponiveis() {
+function ListarChaves() {
   const [chaves, setChaves] = useState([]);
 
   useEffect(() => {
@@ -123,7 +123,7 @@ function ListarChavesDisponiveis() {
   );
 }
 
-export default ListarChavesDisponiveis;
+export default ListarChaves;
 
 ```
 
@@ -131,12 +131,12 @@ export default ListarChavesDisponiveis;
 
 ```
 import React from 'react';
-import ListarChavesDisponiveis from './ListarChavesDisponiveis';
+import ListarChaves from './components/ListarChaves';
 
 function App() {
   return (
     <div className="App">
-      <ListarChavesDisponiveis />
+      <ListarChaves />
     </div>
   );
 }
