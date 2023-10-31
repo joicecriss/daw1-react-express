@@ -1,40 +1,5 @@
 # Criação de um novo projeto com o MariaDB:
 
-Para a criação de um novo projeto utilizando o banco de dados MariaDB com o
-sistema Linux, é necessário primeiramente verificar se o mesmo se encontra instalado em
-sua máquina. Caso não esteja, siga os passos abaixo para ter a instalação em sua
-máquina e dar início ao projeto:
-
-``` 
-sudo apt update
-
-sudo apt install mariadb-server
-``` 
-
-Após a instalação, é necessário iniciar os serviços do MariaDB e configurá-lo para
-ser executado automaticamente ao ser inicializado:
-
-``` 
-sudo systemctl start mariadb
-
-sudo systemctl enable mariadb
-``` 
-
-Em seguida, é necessário executar um script de configuração inicial, onde será
-possível configurar a senha do usuário root, remover usuários anônimos, desativar login
-remoto como root e remover o banco de dados de teste:
-
-```
-sudo mysql_secure_installation
-``` 
-
-Após a criação e configuração do usuário root, conecte-se ao MariaDB:
-
-```
-mysql -u root -p
-``` 
-
-Após seguir todos os passos, é só continuar com a criação de sua base de dados.
 Para a criação dessa base de dados, é necessário digitar o comando abaixo:
 
 ```
