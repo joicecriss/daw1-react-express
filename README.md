@@ -2,4 +2,4 @@
 ## Trabalho sobre Empréstimo de Chaves usando as tecnologias
 React e Express
 
-Grupo: Joice Cristina, João Gabriel, Rafael Florencio.
+Grupo: Joice Cristina, Lucas Felipe João Gabriel, Rafael Florencio.
