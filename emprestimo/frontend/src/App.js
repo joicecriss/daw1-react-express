@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MenuChaves from './components/Menu';
+import ListarChaves from './components/ListarChaves';
+import InserirChaves from './components/InserirChaves';
+import BuscarChave from './components/BuscarChave';
+import AlterarChave from './components/AlterarChave';
+import RemoverChave from './components/RemoverChave';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <MenuChaves />
+
+        <Routes>
+          <Route path="/listar-chaves" element={<ListarChaves />} />
+          <Route path="/inserir-chave" element={<InserirChaves />} />
+          <Route path="/buscar-chave" element={<BuscarChave />} />
+          <Route path="/alterar-chave" element={<AlterarChave />} />
+          <Route path="/remover-chave" element={<RemoverChave />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

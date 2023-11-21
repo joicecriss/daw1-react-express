@@ -1,21 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import ListarChaves from './components/ListarChaves';
 import reportWebVitals from './reportWebVitals';
-import InserirChave from './components/InserirChaves';
-import BuscarChave from './components/BuscarChave';
-import AlterarChave from './components/AlterarChave';
-import RemoverChave from './components/RemoverChave';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <InserirChave />
-    <ListarChaves />
-    <BuscarChave />
-    <AlterarChave />
-    <RemoverChave />
+    <App  />
   </React.StrictMode>
 );
 
