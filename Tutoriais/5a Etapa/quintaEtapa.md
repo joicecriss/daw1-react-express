@@ -22,7 +22,10 @@ npm install express mysql2
 npm install cors
 ```
 
-- Para facilitar criar os arquivos e inicializar o projeto, abra o Visual Studio Code, digite este comando no terminal: 
+- Para facilitar criar os arquivos e inicializar o projeto, abra o Visual Studio Code, digite este comando no terminal:
+```
+cd ..
+```
 ```
 code .
 ```
