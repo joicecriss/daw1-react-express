@@ -2,7 +2,7 @@
 
 ### Backend
 
-### Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para buscar chaves:
+- Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para inserir chaves:
 
 ```
 // Rota para buscar uma chave pelo nome
@@ -25,7 +25,7 @@ app.get('/api/buscar-chave/:nome', (req, res) => {
 
 ### Frontend
 
-### Crie o arquivo BuscarChave.js dentro da pasta components, que está na src do frontend e coloque este código:
+- Crie o arquivo BuscarChave.js dentro da pasta components, que está na src do frontend e coloque este código:
 
 ```
 import React, { useState } from 'react';
@@ -72,7 +72,7 @@ export default BuscarChave;
 
 ### Backend
 
-### Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para buscar chaves:
+- Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para buscar chaves:
 
 ```
 // Rota para alterar uma chave pelo ID
@@ -92,7 +92,7 @@ app.put('/api/alterar-chave/:id', (req, res) => {
 
 ### Frontend
 
-### Crie o arquivo AlterarChave.js dentro da pasta components, que está na src do frontend e coloque este código:
+- Crie o arquivo AlterarChave.js dentro da pasta components, que está na src do frontend e coloque este código:
 
 ```
 import React, { useState } from 'react';
@@ -139,7 +139,7 @@ export default AlterarChave;
 
 ## Backend
 
-### Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para alterar chaves:
+- Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para alterar chaves:
 
 ```
 // Rota para remover (desativar) uma chave pelo ID
@@ -158,7 +158,7 @@ app.put('/api/remover-chave/:id', (req, res) => {
 
 ## Frontend
 
-### Crie o arquivo RemoverChave.js dentro da pasta components, que está na src do frontend e coloque este código:
+- Crie o arquivo RemoverChave.js dentro da pasta components, que está na src do frontend e coloque este código:
 
 ```
 import React, { useState } from 'react';
@@ -194,7 +194,7 @@ export default RemoverChave;
 
 # Criando o menu com as rotas dos components
 
-### Crie o arquivo Home.js dentro da pasta components, que está na pasta src do frontend e coloque este código:
+- Crie o arquivo Home.js dentro da pasta components, que está na pasta src do frontend e coloque este código:
 
 ```
 import React from 'react';
@@ -214,7 +214,7 @@ export default Home;
 
 ```
 
-### Dentro da pasta src, crie um arquivo App.js e cole este código: (Caso já tenha sido criado pelo react, substitua por este em seguida)
+- Dentro da pasta src, crie um arquivo App.js e cole este código: (Caso já tenha sido criado pelo react, substitua por este em seguida)
 
 ```
 import React from "react";
@@ -239,10 +239,9 @@ function App() {
 }
 
 export default App;
-
 ```
 
-### Dentro da pasta src, crie o arquivo routes.js e cole este código:
+- Dentro da pasta src, crie o arquivo routes.js e cole este código:
 
 ```
 import { Routes, Route } from "react-router-dom";
@@ -271,7 +270,7 @@ function MainRoutes() {
 export default MainRoutes;
 ```
 
-### Atualize o arquivo InserirChaves.js:
+- Atualize o arquivo InserirChaves.js:
 
 ```
 import React, { useState } from 'react';
@@ -307,7 +306,7 @@ function InserirChave({ atualizarChaves }) {
 
   return (
     <div>
-      <App />
+        <App />
       <h2>Inserir Nova Chave</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -323,17 +322,16 @@ function InserirChave({ atualizarChaves }) {
 }
 
 export default InserirChave;
-
 ```
 
-### Atualize o arquivo ListarChaves.js:
+- Atualize o arquivo ListarChaves.js:
 
 ```
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import App from '../App';
 
-function ListarChavesDisponiveis() {
+function ListarChaves() {
   const [chaves, setChaves] = useState([]);
 
   useEffect(() => {
@@ -352,7 +350,7 @@ function ListarChavesDisponiveis() {
 
   return (
     <div>
-      <App />
+        <App />
       <h2>Chaves Disponíveis:</h2>
       <ul>
         {chaves.map((chave) => (
@@ -363,6 +361,5 @@ function ListarChavesDisponiveis() {
   );
 }
 
-export default ListarChavesDisponiveis;
-
+export default ListarChaves;
 ```
