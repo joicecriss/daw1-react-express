@@ -1,18 +1,13 @@
-## Como criar o Banco do Sistema
-### Banco - MariaDB
+## Como criar o Banco - MariaDB do Sistema
 
-### 1º Passo:
-Entre no maridb (procure na barra de pesquisa), e coloque a senha do root '123' caso seja pedido.
+- Entre no maridb (procure na barra de pesquisa), e coloque a senha do root '123' caso seja pedido.
 
-Acesse o banco que criamos anteriormente com o código:
+- Acesse o banco que criamos anteriormente com o código:
 ```
 USE emprestimo_chaves;
 ```
 
-### 2º Passo:
-Crie as tabelas para as entidades do sistema.
-
-Digite na interface do banco os seguintes comandos:
+- Crie as tabelas para as entidades do sistema digitando na interface do banco os seguintes comandos:
 ```
 CREATE TABLE chave (
   id        INT AUTO_INCREMENT PRIMARY KEY   NOT NULL,
