@@ -1,4 +1,4 @@
-### Esta é apenas uma demonstração de como é feita as classe no express, não será necessário colocar no projeto.
+### Esta é apenas uma demonstração de como é feita as classes no express, não será necessário colocar no projeto.
 
 ### Chave
 ```
