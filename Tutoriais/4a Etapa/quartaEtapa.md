@@ -42,3 +42,13 @@ CREATE TABLE emprestimo (
   FOREIGN KEY (servidor_devolveID) REFERENCES servidor(id)
 );
 ```
+
+- Agora insira dados na tabela chave:
+```
+INSERT INTO chave(id, nome, status, situacao) values
+(1, 'Chave 1', true, true),
+(2, 'Chave 2', true, true),
+(3, 'Chave 3', true, true),
+(4, 'Chave 4', true, true),
+(5, 'Chave 5', true, true);
+```
