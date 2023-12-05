@@ -64,8 +64,8 @@ const BuscarChave = () => {
       <button onClick={buscarChave}>Buscar</button>
 
       {chaveEncontrada && (
-        <div>
-          <p>Chave Encontrada:</p>
+        <div className="buscar-chave">
+          <h4>Chave Encontrada:</h4>
           <p>ID: {chaveEncontrada.id}</p>
           <p>Nome: {chaveEncontrada.nome}</p>
           <p>
@@ -78,7 +78,6 @@ const BuscarChave = () => {
 };
 
 export default BuscarChave;
-
 ```
 
 # Como criar a funcionalidade Alterar Chave:
@@ -349,7 +348,7 @@ function ListarChaves() {
   const [chaves, setChaves] = useState([]);
 
   useEffect(() => {
-    const apiUrl = "http://localhost:5000";
+    const apiUrl = "http://localhost:5000"; 
 
     axios
       .get(apiUrl + "/api/chaves-disponiveis")
@@ -367,7 +366,7 @@ function ListarChaves() {
       <h2>Chaves Disponíveis:</h2>
       <ul>
         {chaves.map((chave) => (
-          <li key={chave.id}>{chave.nome}</li>
+          <li key={chave.id}>ID: {chave.id} - {chave.nome}</li>
         ))}
       </ul>
     </div>
@@ -375,7 +374,6 @@ function ListarChaves() {
 }
 
 export default ListarChaves;
-
 ```
 
 - Atualize o arquivo index.js:
@@ -479,6 +477,17 @@ label {
 
 .checkbox-alterar {
     width: 10%;
+}
+
+.buscar-chave {
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 40%;
+}
+
+.buscar-chave p {
+    font-size: 15px;
+    margin: 2px 0 2px 0;
 }
 ```
 
