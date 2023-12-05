@@ -2,7 +2,7 @@
 
 ### Backend
 
-### Atualiza o arquivo server.js dentro da pasta backend do projeto, para configurar a inserção da nova chave. Cole o código no arquivo:
+- Atualiza o arquivo server.js dentro da pasta backend do projeto, para configurar a inserção da nova chave. Cole o código no arquivo:
 
 ```
 const express = require('express');
@@ -86,9 +86,9 @@ app.listen(port, () => {
 
 ```
 
-## FrontEnd
+### FrontEnd
 
-### Crie crie um arquivo InserirChave.js na pasta components, e coloque o seguinte código:
+- Crie crie um arquivo InserirChave.js na pasta components, e coloque o seguinte código:
 
 ```
 import React, { useState } from 'react';
@@ -137,7 +137,7 @@ export default InserirChave;
 
 ```
 
-### Abra o arquivo index.js na pasta src, import o arquivo InserirChave e adicione a chamada do arquivo na função, use o exemplo a seguir para aplicar no código. (NÃO COPIE O CÓDIGO, apenas importe o arquivo e mude a chamada na função)
+- Abra o arquivo index.js na pasta src, import o arquivo InserirChave e adicione a chamada do arquivo na função, use o exemplo a seguir para aplicar no código. (NÃO COPIE O CÓDIGO, apenas importe o arquivo e mude a chamada na função)
 
 ```
 import React from 'react';
