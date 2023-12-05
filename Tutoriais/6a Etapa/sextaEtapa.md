@@ -7,8 +7,8 @@
 ```
 const express = require('express');
 const mysql = require('mysql2');
-const app = express();
 const cors = require('cors'); // Importe o módulo cors
+const app = express();
 
 const port = 5000;
 
@@ -17,7 +17,8 @@ const corsOptions = {
     origin: 'http://localhost:3000', // A URL do seu frontend
 };
   
-  app.use(cors(corsOptions));
+app.use(cors(corsOptions));
+app.use(express.json()); // Middleware para fazer o parsing do corpo JSON
 
 // Configuração da conexão com o banco de dados MariaDB
 const connection = mysql.createConnection({
@@ -49,13 +50,18 @@ app.get('/api/chaves-disponiveis', (req, res) => {
 
 // Rota para inserir uma nova chave
 app.post('/api/inserir-chave', (req, res) => {
+    // Verifica se a propriedade 'nome' está presente em req.body
+    if (!req.body || !req.body.nome) {
+        return res.status(400).json({ error: 'Dados inválidos. Propriedade "nome" ausente.' });
+    }
+
     const { nome } = req.body;
   
     if (!nome || nome.trim() === '') {
       return res.status(400).json({ error: 'O nome da chave não pode estar em branco.' });
     }
   
-    const verificaChaveQuery = 'SELECT * FROM chaves WHERE nome = ?';
+    const verificaChaveQuery = `SELECT * FROM chave WHERE nome = ?`;
     connection.query(verificaChaveQuery, [nome], (err, results) => {
       if (err) {
         console.error('Erro na verificação da chave:', err);
@@ -66,7 +72,7 @@ app.post('/api/inserir-chave', (req, res) => {
         return res.status(400).json({ error: 'Já existe uma chave com o mesmo nome.' });
       }
   
-      const inserirChaveQuery = 'INSERT INTO chaves (nome, situacao, status) VALUES (?, true, "Disponível")';
+      const inserirChaveQuery = `INSERT INTO chave (nome, status, situacao) VALUES (?, true, true)`;
       connection.query(inserirChaveQuery, [nome], (err) => {
         if (err) {
           console.error('Erro na inserção da chave:', err);
@@ -75,14 +81,13 @@ app.post('/api/inserir-chave', (req, res) => {
         res.status(200).json({ message: 'Chave inserida com sucesso' });
       });
     });
-  });
+});
   
   
 
 app.listen(port, () => {
   console.log(`Servidor Express está rodando na porta ${port}`);
 });
-
 
 ```
 
@@ -104,7 +109,11 @@ function InserirChave({ atualizarChaves }) {
       return;
     }
 
-    axios.post('http://localhost:5000/api/inserir-chave', {
+    // Defina a URL da API do backend
+    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+
+    // Faça a chamada para a API do backend para listar as chaves disponíveis
+    axios.post(apiUrl + '/api/inserir-chave', {
       nome: novaChave,
     })
       .then((response) => {
@@ -134,7 +143,6 @@ function InserirChave({ atualizarChaves }) {
 }
 
 export default InserirChave;
-
 ```
 
 - Abra o arquivo index.js na pasta src, import o arquivo InserirChave e adicione a chamada do arquivo na função, use o exemplo a seguir para aplicar no código. (NÃO COPIE O CÓDIGO, apenas importe o arquivo e mude a chamada na função)
