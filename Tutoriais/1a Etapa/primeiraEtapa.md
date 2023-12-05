@@ -5,6 +5,8 @@ Digite os comandos no terminal para a instalação do Node.js:
 
 ```
 sudo apt update
+```
+```
 sudo apt install nodejs npm
 ```
 
