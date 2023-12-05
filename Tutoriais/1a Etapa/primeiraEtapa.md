@@ -17,7 +17,8 @@ Siga os passos abaixo para ter a instalação em sua máquina do banco de dados:
 
 ``` 
 sudo apt update
-
+```
+```
 sudo apt install mariadb-server
 ``` 
 
@@ -26,13 +27,16 @@ ser executado automaticamente ao ser inicializado:
 
 ``` 
 sudo systemctl start mariadb
-
+```
+```
 sudo systemctl enable mariadb
 ``` 
 
 Em seguida, é necessário executar um script de configuração inicial, onde será
 possível configurar a senha do usuário root, remover usuários anônimos, desativar login
 remoto como root e remover o banco de dados de teste:
+
+# Para a senha root coloque '123'
 
 ```
 sudo mysql_secure_installation
