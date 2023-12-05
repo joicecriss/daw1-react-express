@@ -36,7 +36,7 @@ Em seguida, é necessário executar um script de configuração inicial, onde se
 possível configurar a senha do usuário root, remover usuários anônimos, desativar login
 remoto como root e remover o banco de dados de teste:
 
-# Para a senha root coloque '123'
+### Para a senha root coloque '123'
 
 ```
 sudo mysql_secure_installation
