@@ -2,7 +2,7 @@
 
 ### Backend
 
-### Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para inserir chaves:
+### Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para buscar chaves:
 
 ```
 // Rota para buscar uma chave pelo nome
@@ -30,6 +30,7 @@ app.get('/api/buscar-chave/:nome', (req, res) => {
 ```
 import React, { useState } from 'react';
 import axios from 'axios';
+import App from '../App';
 
 const BuscarChave = () => {
   const [nomeChave, setNomeChave] = useState('');
@@ -47,6 +48,7 @@ const BuscarChave = () => {
 
   return (
     <div>
+      <App />
       <h2>Buscar Chave</h2>
       <input type="text" value={nomeChave} onChange={(e) => setNomeChave(e.target.value)} />
       <button onClick={buscarChave}>Buscar</button>
@@ -95,6 +97,7 @@ app.put('/api/alterar-chave/:id', (req, res) => {
 ```
 import React, { useState } from 'react';
 import axios from 'axios';
+import App from '../App';
 
 const AlterarChave = () => {
   const [chaveId, setChaveId] = useState('');
@@ -116,6 +119,7 @@ const AlterarChave = () => {
 
   return (
     <div>
+      <App />
       <h2>Alterar Chave</h2>
       <input type="text" placeholder="ID da Chave" value={chaveId} onChange={(e) => setChaveId(e.target.value)} />
       <input type="text" placeholder="Novo Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
@@ -159,6 +163,7 @@ app.put('/api/remover-chave/:id', (req, res) => {
 ```
 import React, { useState } from 'react';
 import axios from 'axios';
+import App from '../App';
 
 const RemoverChave = () => {
   const [chaveId, setChaveId] = useState('');
@@ -176,6 +181,7 @@ const RemoverChave = () => {
 
   return (
     <div>
+      <App />
       <h2>Remover Chave</h2>
       <input type="text" placeholder="ID da Chave" value={chaveId} onChange={(e) => setChaveId(e.target.value)} />
       <button onClick={removerChave}>Remover</button>
@@ -188,57 +194,175 @@ export default RemoverChave;
 
 # Criando o menu com as rotas dos components
 
-### Crie o arquivo Menu.js dentro da pasta components, na pasta src do frontend e coloque este código:
+### Crie o arquivo Home.js dentro da pasta components, que está na pasta src do frontend e coloque este código:
 
 ```
 import React from 'react';
-import { Link } from 'react-router-dom';
+import App from "../App";
 
-const MenuChaves = () => {
+const Home = () => {
   return (
     <div>
-      <Link to="/listar-chaves">Listar Chaves</Link>
-      <Link to="/inserir-chave">Inserir Chave</Link>
-      <Link to="/buscar-chave">Buscar Chave</Link>
-      <Link to="/alterar-chave">Alterar Chave</Link>
-      <Link to="/remover-chave">Remover Chave</Link>
+        <App />
+      <h2>Bem-vindo à Página Inicial</h2>
+      <p>Escolha um componente para visualizar:</p>
     </div>
   );
 };
 
-export default MenuChaves;
+export default Home;
 
 ```
 
 ### Dentro da pasta src, crie um arquivo App.js e cole este código: (Caso já tenha sido criado pelo react, substitua por este em seguida)
 
 ```
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MenuChaves from './components/Menu';
-import ListarChaves from './components/ListarChaves';
-import InserirChaves from './components/InserirChaves';
-import BuscarChave from './components/BuscarChave';
-import AlterarChave from './components/AlterarChave';
-import RemoverChave from './components/RemoverChave';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const App = () => {
+function App() {
   return (
-    <Router>
-      <div>
-        <MenuChaves />
+    <header>
+      <Link to="/listarChaves">Listar Chaves</Link>
 
-        <Routes>
-          <Route path="/listar-chaves" element={<ListarChaves />} />
-          <Route path="/inserir-chave" element={<InserirChaves />} />
-          <Route path="/buscar-chave" element={<BuscarChave />} />
-          <Route path="/alterar-chave" element={<AlterarChave />} />
-          <Route path="/remover-chave" element={<RemoverChave />} />
-        </Routes>
-      </div>
-    </Router>
+      <Link to="/inserirChaves">Inserir Chave</Link>
+
+      <Link to="/buscarChave">Buscar Chave</Link>
+
+      <Link to="/alterarChave">Alterar Chave</Link>
+
+      <Link to="/removerChave">Remover Chave</Link>
+
+      <Link to="/">Início</Link>
+    </header>
   );
-};
+}
 
 export default App;
-``` 
+
+```
+
+### Dentro da pasta src, crie o arquivo routes.js e cole este código:
+
+```
+import { Routes, Route } from "react-router-dom";
+
+import Home from "./components/Home";
+import AlterarChaves from "./components/AlterarChave";
+import BuscarChave from "./components/BuscarChave";
+import InserirChaves from "./components/InserirChaves";
+import RemoverChaves from "./components/RemoverChave";
+import ListarChaves from "./components/ListarChaves"
+
+function MainRoutes() {
+
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/alterarChave" element={<AlterarChaves />} />
+            <Route path="/buscarChave" element={<BuscarChave />} />
+            <Route path="/inserirChaves" element={<InserirChaves />} />
+            <Route path="/removerChave" element={<RemoverChaves />} />
+            <Route path="/listarChaves" element={<ListarChaves />} />
+        </Routes>
+    );
+}
+
+export default MainRoutes;
+```
+
+### Atualize o arquivo InserirChaves.js:
+
+```
+import React, { useState } from 'react';
+import axios from 'axios';
+import App from '../App';
+
+function InserirChave({ atualizarChaves }) {
+  const [novaChave, setNovaChave] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (novaChave.trim() === '') {
+      alert('O nome da chave não pode estar em branco.');
+      return;
+    }
+
+    // Defina a URL da API do backend
+    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+
+    // Faça a chamada para a API do backend para listar as chaves disponíveis
+    axios.post(apiUrl + '/api/inserir-chave', {
+      nome: novaChave,
+    })
+      .then((response) => {
+        alert(response.data.message);
+        setNovaChave('');
+        atualizarChaves(); // Atualize a lista de chaves após a inserção
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  return (
+    <div>
+      <App />
+      <h2>Inserir Nova Chave</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Nome da chave"
+          value={novaChave}
+          onChange={(e) => setNovaChave(e.target.value)}
+        />
+        <button type="submit">Inserir Chave</button>
+      </form>
+    </div>
+  );
+}
+
+export default InserirChave;
+
+```
+
+### Atualize o arquivo ListarChaves.js:
+
+```
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import App from '../App';
+
+function ListarChavesDisponiveis() {
+  const [chaves, setChaves] = useState([]);
+
+  useEffect(() => {
+    // Defina a URL da API do backend
+    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+
+    // Faça a chamada para a API do backend para listar as chaves disponíveis
+    axios.get(apiUrl + '/api/chaves-disponiveis')
+      .then((response) => {
+        setChaves(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <App />
+      <h2>Chaves Disponíveis:</h2>
+      <ul>
+        {chaves.map((chave) => (
+          <li key={chave.id}>{chave.nome}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default ListarChavesDisponiveis;
+
+```
