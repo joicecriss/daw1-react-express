@@ -28,20 +28,25 @@ app.get('/api/buscar-chave/:nome', (req, res) => {
 - Crie o arquivo BuscarChave.js dentro da pasta components, que está na src do frontend e coloque este código:
 
 ```
-import React, { useState } from 'react';
-import axios from 'axios';
-import App from '../App';
+import React, { useState } from "react";
+import axios from "axios";
+import App from "../App";
 
 const BuscarChave = () => {
-  const [nomeChave, setNomeChave] = useState('');
+  const [nomeChave, setNomeChave] = useState("");
   const [chaveEncontrada, setChaveEncontrada] = useState(null);
 
   const buscarChave = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/buscar-chave/${nomeChave}`);
+      const response = await axios.get(
+        `http://localhost:5000/api/buscar-chave/${nomeChave}`
+      );
       setChaveEncontrada(response.data);
     } catch (error) {
-      console.error('Erro ao buscar chave:', error.response?.data || error.message);
+      console.error(
+        "Erro ao buscar chave:",
+        error.response?.data || error.message
+      );
       setChaveEncontrada(null);
     }
   };
@@ -50,7 +55,12 @@ const BuscarChave = () => {
     <div>
       <App />
       <h2>Buscar Chave</h2>
-      <input type="text" value={nomeChave} onChange={(e) => setNomeChave(e.target.value)} />
+      <input
+        type="text"
+        value={nomeChave}
+        placeholder="Digite o nome da chave"
+        onChange={(e) => setNomeChave(e.target.value)}
+      />
       <button onClick={buscarChave}>Buscar</button>
 
       {chaveEncontrada && (
@@ -58,7 +68,9 @@ const BuscarChave = () => {
           <p>Chave Encontrada:</p>
           <p>ID: {chaveEncontrada.id}</p>
           <p>Nome: {chaveEncontrada.nome}</p>
-          <p>Situação: {chaveEncontrada.situacao ? 'Disponível' : 'Indisponível'}</p>
+          <p>
+            Situação: {chaveEncontrada.situacao ? "Disponível" : "Indisponível"}
+          </p>
         </div>
       )}
     </div>
@@ -66,6 +78,7 @@ const BuscarChave = () => {
 };
 
 export default BuscarChave;
+
 ```
 
 # Como criar a funcionalidade Alterar Chave:
@@ -123,7 +136,7 @@ const AlterarChave = () => {
       <h2>Alterar Chave</h2>
       <input type="text" placeholder="ID da Chave" value={chaveId} onChange={(e) => setChaveId(e.target.value)} />
       <input type="text" placeholder="Novo Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
-      <label>
+      <label className='checkbox-alterar'>
         <input type="checkbox" checked={situacao} onChange={() => setSituacao(!situacao)} />
         Disponível
       </label>
@@ -204,8 +217,10 @@ const Home = () => {
   return (
     <div>
         <App />
-      <h2>Bem-vindo à Página Inicial</h2>
-      <p>Escolha um componente para visualizar:</p>
+      <h2>Empréstimo de Chaves</h2>
+      <p>Bem-vindo ao sistema de gerenciamento de empréstimo de chaves.
+      <br/>
+      Organize e controle o acesso de forma eficiente.</p>
     </div>
   );
 };
@@ -322,24 +337,26 @@ function InserirChave({ atualizarChaves }) {
 }
 
 export default InserirChave;
+
 ```
 
 - Atualize o arquivo ListarChaves.js:
 
 ```
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import App from '../App';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import App from "../App";
 
 function ListarChaves() {
   const [chaves, setChaves] = useState([]);
 
   useEffect(() => {
     // Defina a URL da API do backend
-    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+    const apiUrl = "http://localhost:5000"; // Altere a porta para a do seu backend
 
     // Faça a chamada para a API do backend para listar as chaves disponíveis
-    axios.get(apiUrl + '/api/chaves-disponiveis')
+    axios
+      .get(apiUrl + "/api/chaves-disponiveis")
       .then((response) => {
         setChaves(response.data);
       })
@@ -350,7 +367,7 @@ function ListarChaves() {
 
   return (
     <div>
-        <App />
+      <App />
       <h2>Chaves Disponíveis:</h2>
       <ul>
         {chaves.map((chave) => (
@@ -362,6 +379,7 @@ function ListarChaves() {
 }
 
 export default ListarChaves;
+
 ```
 
 - Atualize o arquivo index.js:
@@ -395,10 +413,82 @@ reportWebVitals();
   
 - Crie o arquivo global.css dentro da pasta styles e coloque o código:
 ```
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 600px;
+    margin: 10rem auto;
+    padding: 3rem;
 
+    background-color: #F2D4F3;
+    
+    border: 5px solid #791A78;
+    border-radius: 2rem;
+}
+
+header {
+    
+    margin-bottom: 2rem;
+    
+    color: #791A78;
+    text-decoration:none;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+}
+
+header div a {
+    text-decoration: none;
+}
+
+header div a:hover {
+    color: #BC66BC;
+    text-decoration: underline;
+}
+
+input {
+    width: 50%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #791A78;
+    border-radius: 0.5rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    width: 20%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #791A78;
+    border-radius: 0.5rem;
+
+    background-color: #791A78;
+    color: #FFF;
+}
+
+button:hover {
+    background-color: #BC66BC;
+}
+
+label {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 0.5rem;
+    color: #791A78;
+}
+
+.checkbox-alterar {
+    width: 10%;
+}
 ```
 
 - Importe o css no arquivo App.js:
 ```
 import "./styles/global.css";
 ```
+
+- Altere o title do projeto para Empréstimo de Chaves, o arquivo index.html está na pasta public. 
