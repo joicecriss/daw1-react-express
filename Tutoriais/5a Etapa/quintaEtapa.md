@@ -2,19 +2,32 @@
 
 ### Backend
 
-### Crie uma pasta para o seu projeto e navegue até ela no terminal. (use cd para isso)
+- Crie uma pasta para que o projeto fique dentro, faça na área de trabalho. Abra o terminal dentro da pasta (caso o terminal não esteja dentro da pasta que você criou, navegue até ela usando cd. "cd nome-da-pasta-criada").
 
-### Inicialize um projeto Node.js e instale as dependências:
+- Crie o projeto instalando as seguintes dependências:
 
 ```
 mkdir backend
+```
+```
 cd backend
+```
+```
 npm init -y
+```
+```
 npm install express mysql2
+```
+```
 npm install cors
 ```
 
-### Crie um arquivo server.js dentro da pasta backend do projeto, para configurar o servidor Express. Cole o código no arquivo:
+- Para facilitar criar os arquivos e inicializar o projeto, abra o Visual Studio Code, digite este comando no terminal: 
+```
+code .
+```
+
+- Crie um arquivo server.js dentro da pasta backend do projeto, para configurar o servidor Express. Cole o código no arquivo:
 
 ```
 const express = require('express');
@@ -63,7 +76,7 @@ app.listen(port, () => {
 
 ```
 
-### Execute o servidor backend
+- Abra um terminal no VS Code, e inicialize o backend:
 
 ```
 node server.js
@@ -71,24 +84,30 @@ node server.js
 
 ## FrontEnd
 
-### Agora crie o projeto React dentro do diretório do projeto seguindo os próximos passos:
+- Agora crie o projeto React dentro do diretório do projeto seguindo os próximos passos:
 
-### Em uma nova janela do terminal, navegue até a pasta raiz do seu projeto.
+- Em uma nova janela do terminal, navegue até a pasta raiz do seu projeto.
 
-### Inicialize um novo projeto React:
+- Inicialize um novo projeto React:
 
 ```
 npx create-react-app frontend
+```
+```
 cd frontend
 ```
 
-### Instale a biblioteca axios para fazer chamadas à API do backend:
+- Instale a biblioteca axios para fazer chamadas à API do backend e a biblioteca react-router-dom para as rotas:
 
 ```
 npm install axios
 ```
+```
+npm install react-router-dom
+```
 
-### Crie uma pasta components dentro da pasta src, e crie um arquivo ListarChaves.js na pasta components, e coloque o seguinte código:
+- Crie uma pasta components dentro da pasta src.
+- Crie um arquivo ListarChaves.js na pasta components, e coloque o seguinte código:
 
 ```
 import React, { useEffect, useState } from 'react';
@@ -127,7 +146,7 @@ export default ListarChaves;
 
 ```
 
-### Abra o arquivo index.js na pasta src, import o arquivo ListarChaves e Altere a chamada do arquivo na função para ListarChaves, use o exemplo a seguir para aplicar no código. (NÃO COPIE O CÓDIGO, apenas importe o arquivo e mude a chamada na função)
+- Abra o arquivo index.js na pasta src, import o arquivo ListarChaves e Altere a chamada do arquivo na função para ListarChaves, use o exemplo a seguir para aplicar no código. (NÃO COPIE O CÓDIGO, apenas importe o arquivo e mude a chamada na função)
 
 ```
 import React from 'react';
@@ -144,8 +163,10 @@ function App() {
 export default App;
 ```
 
-### Execute o frontend
-
+- Execute o frontend em outro terminal, entre na pasta frontend para isso:
+```
+cd frontend
+```
 ```
 npm start
 ```
