@@ -39,10 +39,9 @@ code .
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
-const cors = require('cors'); // Importe o módulo cors
+const cors = require('cors'); 
 const port = 5000;
 
-// Configuração do CORS para permitir solicitações do frontend
 const corsOptions = {
     origin: 'http://localhost:3000', // A URL do seu frontend
 };
@@ -123,10 +122,8 @@ function ListarChaves() {
   const [chaves, setChaves] = useState([]);
 
   useEffect(() => {
-    // Defina a URL da API do backend
-    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+    const apiUrl = 'http://localhost:5000';
 
-    // Faça a chamada para a API do backend para listar as chaves disponíveis
     axios.get(apiUrl + '/api/chaves-disponiveis')
       .then((response) => {
         setChaves(response.data);
