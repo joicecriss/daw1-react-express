@@ -1,0 +1,33 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 600px;
+    margin: 10rem auto;
+    padding: 3rem;
+
+    background-color: #F2D4F3;
+    
+    border: 5px solid #791A78;
+    border-radius: 2rem;
+}
+
+header {
+    
+    margin-bottom: 2rem;
+    
+    color: #791A78;
+    text-decoration:none;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+}
+
+header div a {
+    text-decoration: none;
+}
+
+header div a:hover {
+    color: #BC66BC;
+    text-decoration: underline;
+}
