@@ -137,7 +137,7 @@ export default AlterarChave;
 
 # Como criar a funcionalidade Remover Chave:
 
-## Backend
+### Backend
 
 - Atualize o arquivo server.js colocando esse código abaixo da funcionalidade de rota para alterar chaves:
 
@@ -156,7 +156,7 @@ app.put('/api/remover-chave/:id', (req, res) => {
 });
 ```
 
-## Frontend
+### Frontend
 
 - Crie o arquivo RemoverChave.js dentro da pasta components, que está na src do frontend e coloque este código:
 
@@ -385,4 +385,20 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+```
+
+# Criando a estilização de todo o projeto:
+
+- Crie uma pasta chamada styles dentro da pasta src que está no frontend.
+- Excluir os arquivos css que estão na pasta src.
+- Dentro do arquivo index.js, retire o import do arquivo css.
+  
+- Crie o arquivo global.css dentro da pasta styles e coloque o código:
+```
+
+```
+
+- Importe o css no arquivo App.js:
+```
+import "./styles/global.css";
 ```
