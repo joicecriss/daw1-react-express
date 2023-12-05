@@ -22,8 +22,11 @@ npm install express mysql2
 npm install cors
 ```
 
-- Para facilitar criar os arquivos e inicializar o projeto, abra o Visual Studio Code, digite este comando no terminal:
+- Para facilitar criar os arquivos e inicializar o projeto, abra o Visual Studio Code.
+- Digite este comando no terminal para abrir o VS: (Se não, abra o VS pela barra de pesquisa e abra a pasta do projeto)
 ```
+Se no terminal você estiver dentro da pasta backend, use este código para voltar para a pasta principal.)
+
 cd ..
 ```
 ```
@@ -79,7 +82,7 @@ app.listen(port, () => {
 
 ```
 
-- Abra um terminal no VS Code, e inicialize o backend:
+- Abra um terminal no VS Code, e inicialize o backend: (Entre na pasta backend para inicializar o servidor "cd backend")
 
 ```
 node server.js
