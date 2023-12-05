@@ -229,7 +229,7 @@ export default Home;
 
 ```
 
-- Dentro da pasta src, crie um arquivo App.js e cole este código: (Caso já tenha sido criado pelo react, substitua por este em seguida)
+- Dentro da pasta src, crie um arquivo App.js e cole este código: (Caso já tenha sido criado pelo react, substitua por este código)
 
 ```
 import React from "react";
