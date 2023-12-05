@@ -7,18 +7,17 @@
 ```
 const express = require('express');
 const mysql = require('mysql2');
-const cors = require('cors'); // Importe o módulo cors
+const cors = require('cors'); 
 const app = express();
 
 const port = 5000;
 
-// Configuração do CORS para permitir solicitações do frontend
 const corsOptions = {
-    origin: 'http://localhost:3000', // A URL do seu frontend
+    origin: 'http://localhost:3000',
 };
   
 app.use(cors(corsOptions));
-app.use(express.json()); // Middleware para fazer o parsing do corpo JSON
+app.use(express.json()); 
 
 // Configuração da conexão com o banco de dados MariaDB
 const connection = mysql.createConnection({
@@ -50,7 +49,6 @@ app.get('/api/chaves-disponiveis', (req, res) => {
 
 // Rota para inserir uma nova chave
 app.post('/api/inserir-chave', (req, res) => {
-    // Verifica se a propriedade 'nome' está presente em req.body
     if (!req.body || !req.body.nome) {
         return res.status(400).json({ error: 'Dados inválidos. Propriedade "nome" ausente.' });
     }
@@ -109,17 +107,15 @@ function InserirChave({ atualizarChaves }) {
       return;
     }
 
-    // Defina a URL da API do backend
-    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+    const apiUrl = 'http://localhost:5000';
 
-    // Faça a chamada para a API do backend para listar as chaves disponíveis
     axios.post(apiUrl + '/api/inserir-chave', {
       nome: novaChave,
     })
       .then((response) => {
         alert(response.data.message);
         setNovaChave('');
-        atualizarChaves(); // Atualize a lista de chaves após a inserção
+        atualizarChaves();
       })
       .catch((error) => {
         console.error(error);
