@@ -14,7 +14,7 @@ app.get('/api/buscar-chave/:nome', (req, res) => {
       res.status(500).json({ error: 'Erro ao buscar a chave.' });
     } else {
       if (results.length > 0) {
-        res.json(results[0]); // Retorna a primeira chave encontrada (ou ajuste conforme necessário)
+        res.json(results[0]);
       } else {
         res.status(404).json({ error: 'Chave não encontrada.' });
       }
@@ -302,17 +302,15 @@ function InserirChave({ atualizarChaves }) {
       return;
     }
 
-    // Defina a URL da API do backend
-    const apiUrl = 'http://localhost:5000'; // Altere a porta para a do seu backend
+    const apiUrl = 'http://localhost:5000'; 
 
-    // Faça a chamada para a API do backend para listar as chaves disponíveis
     axios.post(apiUrl + '/api/inserir-chave', {
       nome: novaChave,
     })
       .then((response) => {
         alert(response.data.message);
         setNovaChave('');
-        atualizarChaves(); // Atualize a lista de chaves após a inserção
+        atualizarChaves(); 
       })
       .catch((error) => {
         console.error(error);
@@ -351,10 +349,8 @@ function ListarChaves() {
   const [chaves, setChaves] = useState([]);
 
   useEffect(() => {
-    // Defina a URL da API do backend
-    const apiUrl = "http://localhost:5000"; // Altere a porta para a do seu backend
+    const apiUrl = "http://localhost:5000";
 
-    // Faça a chamada para a API do backend para listar as chaves disponíveis
     axios
       .get(apiUrl + "/api/chaves-disponiveis")
       .then((response) => {
