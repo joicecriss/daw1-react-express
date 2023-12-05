@@ -26,7 +26,7 @@ const AlterarChave = () => {
       <h2>Alterar Chave</h2>
       <input type="text" placeholder="ID da Chave" value={chaveId} onChange={(e) => setChaveId(e.target.value)} />
       <input type="text" placeholder="Novo Nome" value={nome} onChange={(e) => setNome(e.target.value)} />
-      <label>
+      <label className='checkbox-alterar'>
         <input type="checkbox" checked={situacao} onChange={() => setSituacao(!situacao)} />
         Disponível
       </label>

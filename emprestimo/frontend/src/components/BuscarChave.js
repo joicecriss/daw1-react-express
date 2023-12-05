@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import App from '../App';
+import React, { useState } from "react";
+import axios from "axios";
+import App from "../App";
 
 const BuscarChave = () => {
-  const [nomeChave, setNomeChave] = useState('');
+  const [nomeChave, setNomeChave] = useState("");
   const [chaveEncontrada, setChaveEncontrada] = useState(null);
 
   const buscarChave = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/buscar-chave/${nomeChave}`);
+      const response = await axios.get(
+        `http://localhost:5000/api/buscar-chave/${nomeChave}`
+      );
       setChaveEncontrada(response.data);
     } catch (error) {
-      console.error('Erro ao buscar chave:', error.response?.data || error.message);
+      console.error(
+        "Erro ao buscar chave:",
+        error.response?.data || error.message
+      );
       setChaveEncontrada(null);
     }
   };
@@ -20,15 +25,22 @@ const BuscarChave = () => {
     <div>
       <App />
       <h2>Buscar Chave</h2>
-      <input type="text" value={nomeChave} onChange={(e) => setNomeChave(e.target.value)} />
+      <input
+        type="text"
+        value={nomeChave}
+        placeholder="Digite o nome da chave"
+        onChange={(e) => setNomeChave(e.target.value)}
+      />
       <button onClick={buscarChave}>Buscar</button>
 
       {chaveEncontrada && (
-        <div>
-          <p>Chave Encontrada:</p>
+        <div className="buscar-chave">
+          <h4>Chave Encontrada:</h4>
           <p>ID: {chaveEncontrada.id}</p>
           <p>Nome: {chaveEncontrada.nome}</p>
-          <p>Situação: {chaveEncontrada.situacao ? 'Disponível' : 'Indisponível'}</p>
+          <p>
+            Situação: {chaveEncontrada.situacao ? "Disponível" : "Indisponível"}
+          </p>
         </div>
       )}
     </div>
